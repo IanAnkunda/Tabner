@@ -1,0 +1,9 @@
+input.form-control.rounded {
+    border-radius: 2rem !important;
+  }
+.padding-sm{
+    padding: 20px;
+}
+.margin-r-20{
+  margin-right: 20px;
+}

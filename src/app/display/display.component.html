@@ -1,0 +1,60 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand cursor-pointer" routerLink="/">Tabner</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+          <a class="nav-link cursor-pointer" >Table</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0 margin-r-20" > 
+        <mat-icon matBadge={{filterMetadata.count}} mat-raised-button color="primary" matBadgePosition="above after" matBadgeOverlap="false" matBadgeColor="warn">notifications</mat-icon>
+      </form>
+      <form class="form-inline my-2 my-lg-0" >  </form>
+      
+    </div>
+  </nav>
+
+<div class="container padding-sm">
+
+    <div class="form-group col-md-4" style="float: right;">
+      <input type="text" class="form-control rounded"  placeholder="Search" [(ngModel)]="searchedKeyword">
+    </div>
+    
+    <table class="table table-striped table-bordered">
+      <thead>
+          <tr>
+              <th>Name</th>
+              <th>Username</th>
+              <th>Email</th>
+              <th>LAT</th>
+              <th>LONG</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let user of users | filter:searchedKeyword:filterMetadata;" >
+              <td>{{user.name}}</td>
+              <td>{{user.username}}</td>
+              <td>{{user.email}}</td>
+              <td>{{user.address.geo.lat}}</td>
+              <td>{{user.address.geo.lng}}</td>
+          </tr>
+          <tr *ngIf="!users">
+              <td colspan="4" class="text-center">
+                  <span class="spinner-border spinner-border-lg align-center"></span>
+              </td>
+          </tr>
+      </tbody>
+      
+    <div>Count: {{filterMetadata.count}}</div>
+    </table>
+    </div>
